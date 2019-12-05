@@ -20,9 +20,17 @@ module.exports = {
         }
       },
       {
-        test:/\.css$/,
-        include: SRC_DIR,
-        use:['style-loader','css-loader']
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            },
+          },
+        ],
       }
     ]
   }
